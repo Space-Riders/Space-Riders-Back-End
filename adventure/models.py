@@ -5,6 +5,15 @@ from django.dispatch import receiver
 from rest_framework.authtoken.models import Token
 import uuid
 
+class Monster(models.Model):
+    name = models.CharField(max_length=50, default="Venus Fly Trap")
+    description = models.CharField(
+        max_length=500, default="An angry little bugger")
+    honeyGained = models.IntegerField(default=2)
+    honeyLost = models.IntegerField(default=1)
+    xp = models.IntegerField(default=1)
+    xpGained = models.IntegerField(default=1)
+
 class Room(models.Model):
     title = models.CharField(max_length=50, default="DEFAULT TITLE")
     description = models.CharField(max_length=500, default="DEFAULT DESCRIPTION")
