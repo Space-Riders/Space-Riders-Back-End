@@ -1,7 +1,7 @@
 # Space-Ryders Back End API Documentation
 
 BaseURL : ``
-<details>
+
 <summary><b>POST - Register a new user</b></summary>
 
 <b>Endpoint:</b> `/registration/`
@@ -24,9 +24,9 @@ When successful will return status code of 201 (CREATED), and an object containi
 }
 ```
 
-</details>
 
-<details>
+
+
 <summary><b>POST - Login an existing user</b></summary>
 
 <b>Endpoint:</b> `/login/`
@@ -48,9 +48,9 @@ When successful will return status code of 200 (OK), and an object containing th
 }
 ```
 
-</details>
 
-<details>
+
+
 <summary><b>GET - Get user's intial room</b></summary>
 
 <b>Endpoint:</b> `/adv/init/`
@@ -63,10 +63,10 @@ When successful will return status code of 200 (OK), and an object containing th
 {
   "uuid": "a303434f-e5cc-4a5a-9ad9-46d7ac24c75b",
   "name": "testuser",
-  "title": "hive-e87",
+  "title": "nebula-e87",
   "x_coor": 0,
   "y_coor": 42,
-  "description": "Son a Bee***, this planet smells of adj geyser",
+  "description": "Nebula Cluster",
   "nextRooms": [
     {
       "n": 1027
@@ -85,9 +85,9 @@ When successful will return status code of 200 (OK), and an object containing th
 }
 ```
 
-</details>
-<details>
-<summary><b>POST - Move user to another room</b></summary>
+
+
+<summary><b>POST - Warp ryder to another solar system</b></summary>
 <b>Endpoint:</b> `/adv/move/`
 </br>
 Requires Authorization key in headers with token as the value.
@@ -105,7 +105,7 @@ When successful will return status code of 200 (OK), and an object containing th
 ```json
 {
   "name": "admin",
-  "title": "hive-w315",
+  "title": "planet-w315",
   "description": "Perplexed by the ordinary twin stars, you trod along past the invisible, habitat.",
   "players": [],
   "nextRooms": [
@@ -126,9 +126,7 @@ When successful will return status code of 200 (OK), and an object containing th
 }
 ```
 
-</details>
 
-<details>
 <summary><b>GET - Get all rooms</b></summary>
 <b>Endpoint:</b> `/adv/matrix/`
 </br>
@@ -144,4 +142,3 @@ Requires a response object with the direction:
 
 When successful will return status code of 200 (OK), and an array of arrays containing 1s ## and 0s that signify which are rooms and which are not.
 
-</details>
