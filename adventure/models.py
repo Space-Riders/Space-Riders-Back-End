@@ -26,7 +26,7 @@ class Room(models.Model):
     w_to = models.IntegerField(default=0)
     x_coor = models.IntegerField(default=0)
     y_coor = models.IntegerField(default=0)
-    monster = models.ForeignKey(Monster, default=1, on_delete=models.CASCADE)
+    monster = models.IntegerField(default=0)
 
     def connectRooms(self, destinationRoom, direction):
         destinationRoomID = destinationRoom.id

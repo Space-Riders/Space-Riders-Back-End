@@ -106,6 +106,7 @@ class Grid:
 
                 if not self.grid[y][x] == 0:
                     # Create and Save the room HERE
+                    #import pdb; pdb.set_trace()
                     self.grid[y][x] = Room(
                         title=titleGenerator(), description=descGenerator(), x_coor=x, y_coor=y)
                     currentRoom = self.grid[y][x]
@@ -138,34 +139,34 @@ def fill_rooms_with_monsters():
         bee = math.ceil(random() * 100)
 
         if bee < 12:
-            room.monster = Monster.objects.get(id=1)
+            room.monster = Monster.objects.get(name='Venus Fly Trap').id
             room.save()
         elif bee >= 12 and bee < 24:
-            room.monster = Monster.objects.get(id=2)
+            room.monster = Monster.objects.get(name='Mining Bee').id
             room.save()
         elif bee >= 24 and bee < 35:
-            room.monster = Monster.objects.get(id=3)
+            room.monster = Monster.objects.get(name='Carpenter Bee').id
             room.save()
         elif bee >= 35 and bee < 48:
-            room.monster = Monster.objects.get(id=4)
+            room.monster = Monster.objects.get(name='Digger Bee').id
             room.save()
         elif bee >= 48 and bee < 66:
-            room.monster = Monster.objects.get(id=5)
+            room.monster = Monster.objects.get(name='LeafCutter Bee').id
             room.save()
         elif bee >= 66 and bee < 80:
-            room.monster = Monster.objects.get(id=6)
+            room.monster = Monster.objects.get(name='Bumble Bee').id
             room.save()
         elif bee >= 80 and bee < 89:
-            room.monster = Monster.objects.get(id=7)
+            room.monster = Monster.objects.get(name='Honey Bee').id
             room.save()
         elif bee >= 89 and bee < 94:
-            room.monster = Monster.objects.get(id=8)
+            room.monster = Monster.objects.get(name='Honey Bee').id
             room.save()
         elif bee >= 94 and bee < 98:
-            room.monster = Monster.objects.get(id=9)
+            room.monster = Monster.objects.get(name='Honey Bee').id
             room.save()
         else:
-            room.monster = Monster.objects.get(id=10)
+            room.monster = Monster.objects.get(name='Queen Bee').id
             room.save()
 
 def create_monsters():
@@ -209,13 +210,12 @@ def run():
     
     print("Create Monsters")
     create_monsters()
-    print("Fill Rooms with Monster")
-    fill_rooms_with_monsters()
     print("Creating Bee World")
     beeworld = Grid()
     print("\t carving out grid")
     beeworld.carveGrid()
     print("\t linking rooms")
     beeworld.linkRooms()
-    
+    print("Fill Rooms with Monster")
+    fill_rooms_with_monsters()
     
