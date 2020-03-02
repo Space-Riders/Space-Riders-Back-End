@@ -1,6 +1,6 @@
 # Space-Ryders Back End API Documentation
 
-BaseURL : ``
+BaseURL : `https://space-ryders-be.herokuapp.com/api`
 
 <summary><b>POST - Register a new user</b></summary>
 
