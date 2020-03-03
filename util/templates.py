@@ -2,11 +2,11 @@ import math
 from random import random
 
 templates = [
-   	'A noun1 searching for the noun2 beehind the adj1 noun3',
+   	'A noun1 searching for the noun2 broodhind the adj1 noun3',
 	'The noun1 lost in the adj1 noun2 hoping for the adj2 noun3',
-    'Beehold. adj1. noun1. Are you ready?',
+    'Broodhold. adj1. noun1. Are you ready?',
 	'In the bowels of a noun1 there lies a adj1 noun2',
-	'Forever lost in a adj1 noun1, nothing will ever bee the same',
+	'Forever lost in a adj1 noun1, nothing will ever brood the same',
 	'Bound by a noun1, noun2 lurks in the shadows',
 	'A adj1, adj2, noun1 sits in the middle of this hive',
 	'There is noun1 all around you making a adj1 sound',
@@ -20,7 +20,7 @@ templates = [
 	"A fortnite ago, this place was a adj adj2 noun1",
 	'In a noun1 far far way, a noun2 enters its final noun3',
     'Beware, the adj1 noun1, and the adj2 noun2 in the noun3',
-    "Can you beelieve it? It's the adj1 noun1 in the adj2 noun2.",
+    "Can you believe it? It's the adj1 noun1 in the adj2 noun2.",
     'Giddy-up. Drowning in adj1 noun1, you ponder the noun2.',
     'Woah Nelly! Enter the noun1. How adj1. So adj2.',
     'Tired from your travels you see the adj1 noun1.',
@@ -54,11 +54,11 @@ nouns = [
 	'brood hill',
 	'brood farm',
 	'brood colony',
-    'rhino beetle',
+    'mutalisk',
     'apiary',
     'weevil',
     'fire ant',
-    'stag beetle',
+    'zergling',
     'garden',
     'honeysuckle',
     'sunflowers',
@@ -220,7 +220,7 @@ def titleGenerator():
 
 	number = math.floor(random() * 1000)
 
-	return f'hive-{letter}{number}'
+	return f'brood-{letter}{number}'
 
 
 def descGenerator():
