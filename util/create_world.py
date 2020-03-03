@@ -136,33 +136,33 @@ def fill_rooms_with_monsters():
     rooms = Room.objects.all()
 
     for room in rooms:
-        bee = math.ceil(random() * 100)
+        zergling = math.ceil(random() * 100)
 
-        if bee < 12:
+        if zergling < 12:
             room.monster = Monster.objects.get(name='Larva').id
             room.save()
-        elif bee >= 12 and bee < 24:
+        elif zergling >= 12 and zergling < 24:
             room.monster = Monster.objects.get(name='Drone').id
             room.save()
-        elif bee >= 24 and bee < 35:
+        elif zergling >= 24 and zergling < 35:
             room.monster = Monster.objects.get(name='Roach').id
             room.save()
-        elif bee >= 35 and bee < 48:
+        elif zergling >= 35 and zergling < 48:
             room.monster = Monster.objects.get(name='Zergling').id
             room.save()
-        elif bee >= 48 and bee < 66:
+        elif zergling >= 48 and zergling < 66:
             room.monster = Monster.objects.get(name='Baneling').id
             room.save()
-        elif bee >= 66 and bee < 80:
+        elif zergling >= 66 and zergling < 80:
             room.monster = Monster.objects.get(name='Hydralisk').id
             room.save()
-        elif bee >= 80 and bee < 89:
+        elif zergling >= 80 and zergling < 89:
             room.monster = Monster.objects.get(name='Corruptor').id
             room.save()
-        elif bee >= 89 and bee < 94:
+        elif zergling >= 89 and zergling < 94:
             room.monster = Monster.objects.get(name='Ultralisk').id
             room.save()
-        elif bee >= 94 and bee < 98:
+        elif zergling >= 94 and zergling < 98:
             room.monster = Monster.objects.get(name='Viper').id
             room.save()
         else:
@@ -189,16 +189,16 @@ def create_monsters():
                         xeritesGained=1000, xeritesLost=666, xp=250, xpGained=16)
     hydralisk.save()
     corruptor = Monster(name="Corruptor", description="Giant brain-like creatures, that can disrupt matter at its core. No armor is safe! BEWARE!",
-                            xeriteGained=3000, xeriteLost=1000, xp=500, xpGained=32)
+                            xeritesGained=3000, xeritesLost=1000, xp=500, xpGained=32)
     corruptor .save()
     ultralisk = Monster(name="Ultralisk", description="Biggest baddest of Zerg, True Monster!, nothing can stand in its way. RUN WHILE YOU CAN!",
-                        xeriteGained=10000, xeriteLost=2000, xp=1500, xpGained=64)
+                        xeritesGained=10000, xeritesLost=2000, xp=1500, xpGained=64)
     ultralisk.save()
-    viper = Monster(name="Viper", description="Perfect strategist. ",
-                        xeriteGained=25000, xeriteLost=11000, xp=5000, xpGained=128)
+    viper = Monster(name="Viper", description="Perfect strategist!",
+                        xeritesGained=25000, xeritesLost=11000, xp=5000, xpGained=128)
     viper.save()
     queen = Monster(name="Queen", description="Mother of Zergs!, Fiercest of all! No one has deafeted her through eons! YOU MIGHT AS WELL QUIT THE GAME!",
-                            xeriteGained=100000, xeriteLost=10000, xp=10000, xpGained=500)
+                            xeritesGained=100000, xeritesLost=10000, xp=10000, xpGained=500)
     queen.save()
 
 def run():
@@ -210,12 +210,12 @@ def run():
     
     print("Create Monsters")
     create_monsters()
-    print("Creating Bee World")
-    beeworld = Grid()
+    print("Creating Zerg World")
+    zergworld = Grid()
     print("\t carving out grid")
-    beeworld.carveGrid()
+    zergworld.carveGrid()
     print("\t linking rooms")
-    beeworld.linkRooms()
+    zergworld.linkRooms()
     print("Fill Rooms with Monster")
     fill_rooms_with_monsters()
     
