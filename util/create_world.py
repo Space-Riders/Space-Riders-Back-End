@@ -139,67 +139,67 @@ def fill_rooms_with_monsters():
         bee = math.ceil(random() * 100)
 
         if bee < 12:
-            room.monster = Monster.objects.get(name='Venus Fly Trap').id
+            room.monster = Monster.objects.get(name='Larva').id
             room.save()
         elif bee >= 12 and bee < 24:
-            room.monster = Monster.objects.get(name='Mining Bee').id
+            room.monster = Monster.objects.get(name='Drone').id
             room.save()
         elif bee >= 24 and bee < 35:
-            room.monster = Monster.objects.get(name='Carpenter Bee').id
+            room.monster = Monster.objects.get(name='Roach').id
             room.save()
         elif bee >= 35 and bee < 48:
-            room.monster = Monster.objects.get(name='Digger Bee').id
+            room.monster = Monster.objects.get(name='Zergling').id
             room.save()
         elif bee >= 48 and bee < 66:
-            room.monster = Monster.objects.get(name='LeafCutter Bee').id
+            room.monster = Monster.objects.get(name='Baneling').id
             room.save()
         elif bee >= 66 and bee < 80:
-            room.monster = Monster.objects.get(name='Bumble Bee').id
+            room.monster = Monster.objects.get(name='Hydralisk').id
             room.save()
         elif bee >= 80 and bee < 89:
-            room.monster = Monster.objects.get(name='Honey Bee').id
+            room.monster = Monster.objects.get(name='Corruptor').id
             room.save()
         elif bee >= 89 and bee < 94:
-            room.monster = Monster.objects.get(name='Honey Bee').id
+            room.monster = Monster.objects.get(name='Ultralisk').id
             room.save()
         elif bee >= 94 and bee < 98:
-            room.monster = Monster.objects.get(name='Honey Bee').id
+            room.monster = Monster.objects.get(name='Viper').id
             room.save()
         else:
-            room.monster = Monster.objects.get(name='Queen Bee').id
+            room.monster = Monster.objects.get(name='Queen').id
             room.save()
 
 def create_monsters():
-    venusFlyTrap = Monster(name="Venus Fly Trap", description="An angry little bugger",
-                        honeyGained=2, honeyLost=1, xp=1, xpGained=1)
-    venusFlyTrap.save()
-    miningBee = Monster(name="Mining Bee", description="The guy likes to find treasure",
-                        honeyGained=10, honeyLost=2, xp=10, xpGained=2)
-    miningBee.save()
-    carpenterBee = Monster(name="Carpenter Bee", description="He really likes wood",
-                        honeyGained=20, honeyLost=3, xp=5, xpGained=2)
-    carpenterBee.save()
-    diggerBee = Monster(name="Digger Bee", description="You'll find him under stuff... maybe even you.",
-                        honeyGained=30, honeyLost=20, xp=15, xpGained=4)
-    diggerBee.save()
-    leafCutterBee = Monster(name="LeafCutter Bee", description="You better Leaf or he'll cut you.",
-                            honeyGained=100, honeyLost=45, xp=50, xpGained=8)
-    leafCutterBee.save()
-    bumbleBee = Monster(name="Bumble Bee", description="This bee can get you some really hot potential suitors.",
-                        honeyGained=1000, honeyLost=666, xp=250, xpGained=16)
-    bumbleBee.save()
-    honeyBee = Monster(name="Honey Bee", description="Sweeter than Maple, better than Canada.",
-                            honeyGained=3000, honeyLost=1000, xp=500, xpGained=32)
-    honeyBee.save()
-    yellowJacket = Monster(name="Yellow Jacker", description="Don't get confused. Not only will he sting you, but his clothing is spectacular.",
-                        honeyGained=10000, honeyLost=2000, xp=1500, xpGained=64)
-    yellowJacket.save()
-    killerBee = Monster(name="Killer Bee", description="He's always confused why everyone is scared of him. He's only killed 1000 people",
-                        honeyGained=25000, honeyLost=11000, xp=5000, xpGained=128)
-    killerBee.save()
-    queenBee = Monster(name="Queen Bee", description="Queen of queens. Bee of bees. Bow down before your master!",
-                            honeyGained=100000, honeyLost=10000, xp=10000, xpGained=500)
-    queenBee.save()
+    larva = Monster(name="Larva", description="Fiesty little bugger.",
+                        xeritesGained=2, xeritesLost=1, xp=1, xpGained=1)
+    larva.save()
+    drone = Monster(name="Drone", description="Mindless worker, mind programmed to do one thing only.",
+                        xeritesGained=10, xeritesLost=2, xp=10, xpGained=2)
+    drone.save()
+    roach = Monster(name="Roach", description="Hideous little freaks, with thick shell, and acid spewing capability that can dissolve neostell armor.",
+                        xeritesGained=20, xeritesLost=3, xp=5, xpGained=2)
+    roach.save()
+    zergling = Monster(name="Zergling", description="A hybrid of 15 different strains, designed to do one thing only, be a perfect killing machine.",
+                        xeritesGained=30, xeritesLost=20, xp=15, xpGained=4)
+    zergling.save()
+    baneling = Monster(name="Baneling", description="Mutated Zergling that comes with nasty package. Watch out for this one.",
+                            xeritesGained=100, xeritesLost=45, xp=50, xpGained=8)
+    baneling.save()
+    hydralisk = Monster(name="Hydralisk", description="Siege Tanks of Zergs. Powerful monster that instill fears on those who confront it.",
+                        xeritesGained=1000, xeritesLost=666, xp=250, xpGained=16)
+    hydralisk.save()
+    corruptor = Monster(name="Corruptor", description="Giant brain-like creatures, that can disrupt matter at its core. No armor is safe! BEWARE!",
+                            xeriteGained=3000, xeriteLost=1000, xp=500, xpGained=32)
+    corruptor .save()
+    ultralisk = Monster(name="Ultralisk", description="Biggest baddest of Zerg, True Monster!, nothing can stand in its way. RUN WHILE YOU CAN!",
+                        xeriteGained=10000, xeriteLost=2000, xp=1500, xpGained=64)
+    ultralisk.save()
+    viper = Monster(name="Viper", description="Perfect strategist. ",
+                        xeriteGained=25000, xeriteLost=11000, xp=5000, xpGained=128)
+    viper.save()
+    queen = Monster(name="Queen", description="Mother of Zergs!, Fiercest of all! No one has deafeted her through eons! YOU MIGHT AS WELL QUIT THE GAME!",
+                            xeriteGained=100000, xeriteLost=10000, xp=10000, xpGained=500)
+    queen.save()
 
 def run():
 

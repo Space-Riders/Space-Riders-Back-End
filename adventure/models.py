@@ -10,8 +10,8 @@ class Monster(models.Model):
     name = models.CharField(max_length=50, default="Venus Fly Trap")
     description = models.CharField(
         max_length=500, default="An angry little bugger")
-    honeyGained = models.IntegerField(default=2)
-    honeyLost = models.IntegerField(default=1)
+    xeritesGained = models.IntegerField(default=2)
+    xeritesLost = models.IntegerField(default=1)
     xp = models.IntegerField(default=1)
     xpGained = models.IntegerField(default=1)
 
@@ -62,7 +62,7 @@ class Player(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     currentRoom = models.IntegerField(default=0)
     uuid = models.UUIDField(default=uuid.uuid4, unique=True)
-    honey = models.IntegerField(default=100)
+    xerites = models.IntegerField(default=100)
     xp = models.IntegerField(default=5)
 
     def initialize(self):

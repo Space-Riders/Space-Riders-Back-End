@@ -32,13 +32,13 @@ def initialize(request):
     roomMonster = {
         'name': monster.name,
         'description': monster.description,
-        'honeyGained': monster.honeyGained,
-        'honeyLost': monster.honeyLost,
+        'xeriteGained': monster.xeriteGained,
+        'xeriteLost': monster.xeriteLost,
         'xpGained': monster.xpGained,
         'xp': monster.xp
     }
 
-    return JsonResponse({'uuid': uuid, 'xp': player.xp, 'honey': player.honey, 'name': player.user.username, 'title': room.title, 'roomId': room.id, 'monster': roomMonster, 'x_coor': room.x_coor, 'y_coor': room.y_coor, 'description': room.description, 'nextRooms': nextRooms, 'players': players}, safe=True)
+    return JsonResponse({'uuid': uuid, 'xp': player.xp, 'xerite': player.xerite, 'name': player.user.username, 'title': room.title, 'roomId': room.id, 'monster': roomMonster, 'x_coor': room.x_coor, 'y_coor': room.y_coor, 'description': room.description, 'nextRooms': nextRooms, 'players': players}, safe=True)
 
 
 @csrf_exempt
@@ -82,8 +82,8 @@ def move(request):
     roomMonster = {
         'name': monster.name,
         'description': monster.description,
-        'honeyGained': monster.honeyGained,
-        'honeyLost': monster.honeyLost,
+        'xeriteGained': monster.xeriteGained,
+        'xeriteLost': monster.xeriteLost,
         'xpGained': monster.xpGained,
         'xp': monster.xp
     }
@@ -105,8 +105,8 @@ def move(request):
         nextRoomMonster = {
             'name': monster.name,
             'description': monster.description,
-            'honeyGained': monster.honeyGained,
-            'honeyLost': monster.honeyLost,
+            'xeriteGained': monster.xeriteGained,
+            'xeriteLost': monster.xeriteLost,
             'xpGained': monster.xpGained,
             'xp': monster.xp
         }
@@ -129,10 +129,10 @@ def move(request):
         #     pusher.trigger(f'p-channel-{p_uuid}', u'broadcast', {
         #                    'message': f'{player.user.username} has entered from the {reverse_dirs[direction]}.'})
 
-        return JsonResponse({'name': player.user.username, 'xp': player.xp, 'honey': player.honey, 'title': nextRoom.title, 'description': nextRoom.description, 'roomId': nextRoom.id, 'monster': nextRoomMonster, 'x_coor': nextRoom.x_coor, 'y_coor': nextRoom.y_coor, 'players': players, 'nextRooms': nextNextRooms, 'error_msg': ""}, safe=True)
+        return JsonResponse({'name': player.user.username, 'xp': player.xp, 'xerite': player.xerite, 'title': nextRoom.title, 'description': nextRoom.description, 'roomId': nextRoom.id, 'monster': nextRoomMonster, 'x_coor': nextRoom.x_coor, 'y_coor': nextRoom.y_coor, 'players': players, 'nextRooms': nextNextRooms, 'error_msg': ""}, safe=True)
     else:
         players = room.playerNames(player_id)
-        return JsonResponse({'name': player.user.username, 'xp': player.xp, 'honey': player.honey, 'title': room.title, 'roomId': room.id, 'description': room.description, 'monster': roomMonster, 'x_coor': room.x_coor, 'y_coor': room.y_coor, 'players': players, 'error_msg': "You cannot move that way."}, safe=True)
+        return JsonResponse({'name': player.user.username, 'xp': player.xp, 'xerite': player.xerite, 'title': room.title, 'roomId': room.id, 'description': room.description, 'monster': roomMonster, 'x_coor': room.x_coor, 'y_coor': room.y_coor, 'players': players, 'error_msg': "You cannot move that way."}, safe=True)
 
 
 @csrf_exempt
@@ -164,28 +164,28 @@ def battleResults(request):
 
     data = json.loads(request.body)
 
-    # honey Gained will just be a positive or negative number
+    # xerite Gained will just be a positive or negative number
     # Front End will just send the "lost" value in the body
     # Will subtract accordingly here
-    honeyGained = data['honeyGained']
+    xeriteGained = data['xeriteGained']
     xpGained = data['xpGained']
 
-    if honeyGained < 0:
-        player.honey += honeyGained
+    if xeriteGained < 0:
+        player.xerite += xeriteGained
         player.save()
     else:
-        player.honey += honeyGained
+        player.xerite += xeriteGained
         player.xp += xpGained
         player.save()
 
-    return JsonResponse({'xp': player.xp, 'honey': player.honey, 'message': f"{user} now has {player.honey} honey and {player.xp} XP"})
+    return JsonResponse({'xp': player.xp, 'xerite': player.xerite, 'message': f"{user} now has {player.xerite} xerite and {player.xp} XP"})
 
 
 @csrf_exempt
 @api_view(["GET"])
 def leaderboard(request):
     allPlayers = Player.objects.all().order_by('-xp')
-    players = [{'username': player.user.username, 'honey': player.honey, 'xp': player.xp}
+    players = [{'username': player.user.username, 'xerite': player.xerite, 'xp': player.xp}
                for player in allPlayers][:10]
 
     return JsonResponse({'topPlayers': players})
@@ -196,9 +196,9 @@ def leaderboard(request):
 def teleport(request):
     player = request.user.player
 
-    if player.honey < 50:
+    if player.xerite < 50:
         return JsonResponse({
-            'error_msg': "You don't have enough honey to complete this action"
+            'error_msg': "You don't have enough xerite to complete this action"
         }, status=401)
     else:
         # Get a room randomly between the first and last rooms
@@ -221,18 +221,18 @@ def teleport(request):
         nextRoomMonster = {
             'name': monster.name,
             'description': monster.description,
-            'honeyGained': monster.honeyGained,
-            'honeyLost': monster.honeyLost,
+            'xeriteGained': monster.xeriteGained,
+            'xeriteLost': monster.xeriteLost,
             'xpGained': monster.xpGained,
             'xp': monster.xp
         }
 
         # Save the player into the new room
-        player.honey -= 50
+        player.xerite -= 50
         player.currentRoom = randomNumber
         player.save()
 
-    return JsonResponse({'name': player.user.username, 'xp': player.xp, 'honey': player.honey, 'title': nextRoom.title, 'description': nextRoom.description, 'roomId': nextRoom.id, 'monster': nextRoomMonster, 'x_coor': nextRoom.x_coor, 'y_coor': nextRoom.y_coor, 'players': players, 'nextRooms': nextNextRooms, 'error_msg': ""}, safe=True)
+    return JsonResponse({'name': player.user.username, 'xp': player.xp, 'xerite': player.xerite, 'title': nextRoom.title, 'description': nextRoom.description, 'roomId': nextRoom.id, 'monster': nextRoomMonster, 'x_coor': nextRoom.x_coor, 'y_coor': nextRoom.y_coor, 'players': players, 'nextRooms': nextNextRooms, 'error_msg': ""}, safe=True)
 
 
 @csrf_exempt
@@ -247,14 +247,14 @@ def boost(request):
     xp = data['xp']
     temp = data['temp']
 
-    if player.honey < cost:
+    if player.xerite < cost:
         return JsonResponse({
-            'error_msg': "You don't have enough honey to complete this action"
+            'error_msg': "You don't have enough xerite to complete this action"
         }, status=401)
 
     # Helper function to actually update the player
     def boostPlayer(player, cost, xp):
-        player.honey += cost
+        player.xerite += cost
         player.xp += xp
         player.save()
 
@@ -266,4 +266,4 @@ def boost(request):
     else:
         boostPlayer(player, -cost, xp)
 
-    return JsonResponse({"honey": player.honey, 'xp': player.xp, "message": f"{request.user.username} spent {cost} honey to get a boost of {xp}xp."})
+    return JsonResponse({"xerite": player.xerite, 'xp': player.xp, "message": f"{request.user.username} spent {cost} xerite to get a boost of {xp}xp."})
