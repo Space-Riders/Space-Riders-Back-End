@@ -32,13 +32,13 @@ def initialize(request):
     roomMonster = {
         'name': monster.name,
         'description': monster.description,
-        'xeriteGained': monster.xeriteGained,
-        'xeriteLost': monster.xeriteLost,
+        'xeritesGained': monster.xeritesGained,
+        'xeritesLost': monster.xeritesLost,
         'xpGained': monster.xpGained,
         'xp': monster.xp
     }
 
-    return JsonResponse({'uuid': uuid, 'xp': player.xp, 'xerite': player.xerite, 'name': player.user.username, 'title': room.title, 'roomId': room.id, 'monster': roomMonster, 'x_coor': room.x_coor, 'y_coor': room.y_coor, 'description': room.description, 'nextRooms': nextRooms, 'players': players}, safe=True)
+    return JsonResponse({'uuid': uuid, 'xp': player.xp, 'xerite': player.xerites, 'name': player.user.username, 'title': room.title, 'roomId': room.id, 'monster': roomMonster, 'x_coor': room.x_coor, 'y_coor': room.y_coor, 'description': room.description, 'nextRooms': nextRooms, 'players': players}, safe=True)
 
 
 @csrf_exempt
@@ -82,8 +82,8 @@ def move(request):
     roomMonster = {
         'name': monster.name,
         'description': monster.description,
-        'xeriteGained': monster.xeriteGained,
-        'xeriteLost': monster.xeriteLost,
+        'xeritesGained': monster.xeritesGained,
+        'xeritesLost': monster.xeritesLost,
         'xpGained': monster.xpGained,
         'xp': monster.xp
     }
@@ -105,8 +105,8 @@ def move(request):
         nextRoomMonster = {
             'name': monster.name,
             'description': monster.description,
-            'xeriteGained': monster.xeriteGained,
-            'xeriteLost': monster.xeriteLost,
+            'xeritesGained': monster.xeritesGained,
+            'xeritesLost': monster.xeritesLost,
             'xpGained': monster.xpGained,
             'xp': monster.xp
         }
