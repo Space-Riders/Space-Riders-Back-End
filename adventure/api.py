@@ -28,7 +28,7 @@ def initialize(request):
     nextRooms = [{'n': room.n_to}, {'e': room.e_to},
                  {'s': room.s_to}, {'w': room.w_to}]
     players = room.playerNames(player_id)
-    monster = Monster.objects.get(id=room.monster.id)
+    monster = Monster.objects.get(id=room.monster)
     roomMonster = {
         'name': monster.name,
         'description': monster.description,
@@ -78,7 +78,7 @@ def move(request):
     data = json.loads(request.body)
     direction = data['direction']
     room = player.room()
-    monster = Monster.objects.get(id=room.monster.id)
+    monster = Monster.objects.get(id=room.monster)
     roomMonster = {
         'name': monster.name,
         'description': monster.description,
@@ -101,7 +101,7 @@ def move(request):
     if nextRoomID is not None and nextRoomID > 0:
         # Room we are moving to
         nextRoom = Room.objects.get(id=nextRoomID)
-        nextMonster = Monster.objects.get(id=nextRoom.monster.id)
+        nextMonster = Monster.objects.get(id=nextRoom.monster)
         nextRoomMonster = {
             'name': monster.name,
             'description': monster.description,
@@ -217,7 +217,7 @@ def teleport(request):
         players = nextRoom.playerNames(player.id)
 
         # Get the monster in that room
-        monster = Monster.objects.get(id=nextRoom.monster.id)
+        monster = Monster.objects.get(id=nextRoom.monster)
         nextRoomMonster = {
             'name': monster.name,
             'description': monster.description,
